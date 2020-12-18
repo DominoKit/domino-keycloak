@@ -195,7 +195,7 @@
 
           <!-- Configure branches -->
           <gitFlowConfig>
-            <productionBranch>master</productionBranch>
+            <productionBranch>main</productionBranch>
             <!-- default is develop, but we use development -->
             <developmentBranch>development</developmentBranch>
           </gitFlowConfig>
