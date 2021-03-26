@@ -3,6 +3,8 @@ JsInterop wrapper for keycloak
 
 ### Maven dependency 
 
+- **Release**
+
 ```xml
 <dependency>
     <groupId>org.dominokit</groupId>
@@ -11,6 +13,14 @@ JsInterop wrapper for keycloak
 </dependency>
 ```
 
+- **Development snapshot**
+```xml
+<dependency>
+    <groupId>org.dominokit</groupId>
+    <artifactId>domino-keycloak</artifactId>
+    <version>HEAD-SNAPSHOT</version>
+</dependency>
+```
 ### GWT inherits 
 
 ```xml
