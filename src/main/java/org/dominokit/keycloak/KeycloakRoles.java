@@ -15,11 +15,16 @@
  */
 package org.dominokit.keycloak;
 
-import elemental2.dom.DomGlobal;
 import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
-@JsType(isNative = true, name = "goog.global", namespace = JsPackage.GLOBAL)
-public class KeycloakDom extends DomGlobal {
-  public static KeycloakWindow window;
+@JsType(isNative = true, namespace = JsPackage.GLOBAL)
+public interface KeycloakRoles {
+
+  @JsProperty
+  String[] getRoles();
+
+  @JsProperty
+  void setRoles(String[] roles);
 }

@@ -15,7 +15,7 @@
  */
 package org.dominokit.keycloak;
 
-public class KeycloakResponseMode {
-  public static final String QUERY = "query";
-  public static final String FRAGMENT = "fragment";
+public interface KeycloakResponseMode {
+  String query = "query";
+  String fragment = "fragment";
 }

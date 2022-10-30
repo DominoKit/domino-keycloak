@@ -15,10 +15,20 @@
  */
 package org.dominokit.keycloak;
 
-import jsinterop.annotations.JsFunction;
+import elemental2.core.JsObject;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsType;
 
-@JsFunction
-@FunctionalInterface
-public interface OnAuthSuccessListener {
-  void onAuthSuccess();
+@JsType(isNative = true, namespace = JsPackage.GLOBAL)
+public interface KeycloakAdapter {
+
+  KeycloakPromise<Void, Void> login(KeycloakLoginOptions options);
+
+  KeycloakPromise<Void, Void> logout(KeycloakLogoutOptions options);
+
+  KeycloakPromise<Void, Void> register(KeycloakRegisterOptions options);
+
+  KeycloakPromise<Void, Void> register();
+
+  String redirectUri(JsObject options, boolean encodeHash);
 }

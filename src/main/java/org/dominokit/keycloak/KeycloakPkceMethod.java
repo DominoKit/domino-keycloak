@@ -15,10 +15,6 @@
  */
 package org.dominokit.keycloak;
 
-import jsinterop.annotations.JsFunction;
-
-@JsFunction
-@FunctionalInterface
-public interface OnAuthErrorListener {
-  void onAuthError();
+public interface KeycloakPkceMethod {
+  String S256 = "S256";
 }

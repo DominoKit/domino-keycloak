@@ -15,10 +15,24 @@
  */
 package org.dominokit.keycloak;
 
-import jsinterop.annotations.JsFunction;
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
+import jsinterop.base.Js;
+import jsinterop.base.JsPropertyMap;
 
-@JsFunction
-@FunctionalInterface
-public interface OnReadyListener {
-  void onReady(boolean authenticated);
+@JsType(isNative = true, namespace = JsPackage.GLOBAL)
+public interface KeycloakLogoutOptions {
+
+  @JsOverlay
+  public static KeycloakLogoutOptions create() {
+    return Js.uncheckedCast(JsPropertyMap.of());
+  }
+
+  @JsProperty
+  String getRedirectUri();
+
+  @JsProperty
+  void setRedirectUri(String redirectUri);
 }

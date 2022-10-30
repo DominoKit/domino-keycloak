@@ -15,10 +15,9 @@
  */
 package org.dominokit.keycloak;
 
-import jsinterop.annotations.JsFunction;
+import elemental2.core.JsMap;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsType;
 
-@JsFunction
-@FunctionalInterface
-public interface OnAuthLogoutListener {
-  void onAuthLogout();
-}
+@JsType(isNative = true, namespace = JsPackage.GLOBAL)
+public class KeycloakResourceAccess extends JsMap<String, KeycloakRoles> {}

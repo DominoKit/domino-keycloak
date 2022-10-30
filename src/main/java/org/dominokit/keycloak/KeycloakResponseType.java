@@ -15,11 +15,8 @@
  */
 package org.dominokit.keycloak;
 
-import elemental2.dom.DomGlobal;
-import jsinterop.annotations.JsPackage;
-import jsinterop.annotations.JsType;
-
-@JsType(isNative = true, name = "goog.global", namespace = JsPackage.GLOBAL)
-public class KeycloakDom extends DomGlobal {
-  public static KeycloakWindow window;
+public interface KeycloakResponseType {
+  String code = "code";
+  String id_token__token = "id_token token";
+  String code__id_token__token = "code id_token token";
 }

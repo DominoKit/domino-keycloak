@@ -15,10 +15,19 @@
  */
 package org.dominokit.keycloak;
 
-import jsinterop.annotations.JsFunction;
+import jsinterop.annotations.JsProperty;
 
-@JsFunction
-@FunctionalInterface
-public interface OnAuthRefreshSuccessListener {
-  void onAuthRefreshSuccess();
+public interface KeycloakError {
+
+  @JsProperty
+  String getError();
+
+  @JsProperty
+  void setError(String error);
+
+  @JsProperty(name = "error_description")
+  String getErrorDescription();
+
+  @JsProperty(name = "error_description")
+  void setErrorDescription(String errorDescription);
 }

@@ -16,7 +16,7 @@
 package org.dominokit.keycloak;
 
 public class KeycloakFlow {
-  public static final String STANDARD = "standard";
-  public static final String IMPLICIT = "implicit";
-  public static final String HYBRID = "hybrid";
+  public static final String standard = "standard";
+  public static final String implicit = "implicit";
+  public static final String hybrid = "hybrid";
 }
