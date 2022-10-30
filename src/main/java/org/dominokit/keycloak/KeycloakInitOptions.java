@@ -23,17 +23,17 @@ import jsinterop.base.Js;
 import jsinterop.base.JsPropertyMap;
 
 @JsType(isNative = true, namespace = JsPackage.GLOBAL)
-public interface InitOptions {
+public interface KeycloakInitOptions {
 
   @JsOverlay
-  static InitOptions create() {
-    InitOptions initOptions = Js.uncheckedCast(JsPropertyMap.of());
-    initOptions.setUseNonce(true);
-    initOptions.setOnLoad(KeycloakOnLoadAction.LOGIN_REQUIRED);
-    initOptions.setCheckLoginIframeInterval(5);
-    initOptions.setResponseMode(KeycloakResponseMode.FRAGMENT);
-    initOptions.setEnableLogging(false);
-    return initOptions;
+  static KeycloakInitOptions create() {
+    KeycloakInitOptions keycloakInitOptions = Js.uncheckedCast(JsPropertyMap.of());
+    keycloakInitOptions.setUseNonce(true);
+    keycloakInitOptions.setOnLoad(KeycloakOnLoad.login_required);
+    keycloakInitOptions.setCheckLoginIframeInterval(5);
+    keycloakInitOptions.setResponseMode(KeycloakResponseMode.fragment);
+    keycloakInitOptions.setEnableLogging(false);
+    return keycloakInitOptions;
   }
 
   @JsProperty
@@ -43,16 +43,17 @@ public interface InitOptions {
   void setUseNonce(boolean useNonce);
 
   @JsProperty
+  KeycloakAdapter getAdapter();
+
+  @JsProperty
+  void setAdapter(KeycloakAdapter adapter);
+
+  @JsProperty
   String getOnLoad();
 
+  /** @param onLoad Use a constant from {@link KeycloakOnLoad} */
   @JsProperty
   void setOnLoad(String onLoad);
-
-  @JsProperty
-  String getSilentCheckSsoRedirectUri();
-
-  @JsProperty
-  void setSilentCheckSsoRedirectUri(String silentCheckSsoRedirectUri);
 
   @JsProperty
   String getToken();
@@ -93,14 +94,35 @@ public interface InitOptions {
   @JsProperty
   String getResponseMode();
 
+  /** @param responseMode use a constant from {@link KeycloakResponseMode} */
   @JsProperty
   void setResponseMode(String responseMode);
 
   @JsProperty
-  String getFlow();
+  String getRedirectUri();
 
   @JsProperty
+  void setRedirectUri(String redirectUri);
+
+  @JsProperty
+  String getSilentCheckSsoRedirectUri();
+
+  @JsProperty
+  void setSilentCheckSsoRedirectUri(String silentCheckSsoRedirectUri);
+
+  @JsProperty
+  String getFlow();
+
+  /** @param flow use a constant from {@link KeycloakFlow} */
+  @JsProperty
   void setFlow(String flow);
+
+  @JsProperty
+  String getPkceMethod();
+
+  /** @param pkceMethod use a constant from {@link KeycloakPkceMethod} */
+  @JsProperty
+  void setPkceMethod(String pkceMethod);
 
   @JsProperty
   boolean isEnableLogging();
@@ -109,14 +131,14 @@ public interface InitOptions {
   void setEnableLogging(boolean enableLogging);
 
   @JsProperty
-  String getPkceMethod();
+  String getScope();
 
   @JsProperty
-  void setPkceMethod(String pkceMethod);
+  void setScope(String scope);
 
   @JsProperty
-  String getPromiseType();
+  double getMessageReceiveTimeout();
 
   @JsProperty
-  void setPromiseType(String promiseType);
+  void setMessageReceiveTimeout(double messageReceiveTimeout);
 }

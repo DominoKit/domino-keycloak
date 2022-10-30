@@ -16,7 +16,6 @@
 package org.dominokit.keycloak;
 
 public class KeycloakPrompt {
-  public static final String LOGIN = "login";
-  public static final String CONSENT = "consent";
-  public static final String NONE = "none";
+  public static final String login = "login";
+  public static final String none = "none";
 }

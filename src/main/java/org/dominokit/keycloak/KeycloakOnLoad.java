@@ -15,7 +15,7 @@
  */
 package org.dominokit.keycloak;
 
-public class KeycloakOnLoadAction {
-  public static final String LOGIN_REQUIRED = "login-required";
-  public static final String CHECK_SSO = "check-sso";
+public interface KeycloakOnLoad {
+  String login_required = "login-required";
+  String check_sso = "check-sso";
 }

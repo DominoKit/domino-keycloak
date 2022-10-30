@@ -15,10 +15,18 @@
  */
 package org.dominokit.keycloak;
 
-import jsinterop.annotations.JsFunction;
+import elemental2.promise.Promise;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsType;
 
-@JsFunction
-@FunctionalInterface
-public interface OnTokenExpiredListener {
-  void onTokenExpired();
+@JsType(isNative = true, namespace = JsPackage.GLOBAL)
+public class KeycloakPromise<Success, Error> extends Promise<Success> {
+
+  public KeycloakPromise(PromiseExecutorCallbackFn<Success> executor) {
+    super(executor);
+  }
+
+  public native KeycloakPromise<Success, Error> success(KeycloakPromiseCallback<Success> callback);
+
+  public native KeycloakPromise<Success, Error> error(KeycloakPromiseCallback<Error> callback);
 }

@@ -19,9 +19,8 @@ import elemental2.dom.Window;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 
-@JsType(isNative = true, namespace = JsPackage.GLOBAL)
+@JsType(isNative = true, name = "Window", namespace = JsPackage.GLOBAL)
 public class KeycloakWindow extends Window {
-  public Keycloak keycloak;
 
   public native Keycloak Keycloak();
 

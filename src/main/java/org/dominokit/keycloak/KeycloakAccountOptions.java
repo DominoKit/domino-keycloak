@@ -15,10 +15,15 @@
  */
 package org.dominokit.keycloak;
 
-import jsinterop.annotations.JsFunction;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
-@JsFunction
-@FunctionalInterface
-public interface OnAuthRefreshErrorListener {
-  void onAuthRefreshError();
+@JsType(isNative = true, namespace = JsPackage.GLOBAL)
+public interface KeycloakAccountOptions {
+  @JsProperty
+  String getRedirectUri();
+
+  @JsProperty
+  void setRedirectUri(String redirectUri);
 }

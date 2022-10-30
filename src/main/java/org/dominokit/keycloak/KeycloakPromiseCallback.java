@@ -15,24 +15,9 @@
  */
 package org.dominokit.keycloak;
 
-import jsinterop.annotations.JsOverlay;
-import jsinterop.annotations.JsPackage;
-import jsinterop.annotations.JsProperty;
-import jsinterop.annotations.JsType;
-import jsinterop.base.Js;
-import jsinterop.base.JsPropertyMap;
+import jsinterop.annotations.JsFunction;
 
-@JsType(isNative = true, namespace = JsPackage.GLOBAL)
-public interface LogoutOptions {
-
-  @JsOverlay
-  public static LogoutOptions create() {
-    return Js.uncheckedCast(JsPropertyMap.of());
-  }
-
-  @JsProperty
-  String getRedirectUri();
-
-  @JsProperty
-  void setRedirectUri(String redirectUri);
+@JsFunction
+public interface KeycloakPromiseCallback<T> {
+  void onCallBack(T result);
 }

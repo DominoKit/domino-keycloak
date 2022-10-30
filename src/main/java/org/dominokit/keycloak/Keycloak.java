@@ -15,79 +15,114 @@
  */
 package org.dominokit.keycloak;
 
-import elemental2.core.JsArray;
 import elemental2.core.JsObject;
-import elemental2.promise.Promise;
+import jsinterop.annotations.JsConstructor;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
+import jsinterop.base.Js;
 
-@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "keycloak")
+@JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Keycloak")
 public class Keycloak extends JsObject {
 
-  @JsOverlay
-  public static Keycloak getInstance() {
-    return KeycloakDom.window.keycloak;
+  @JsType(isNative = true, name = "?", namespace = JsPackage.GLOBAL)
+  public interface KeycloakConfigUnionType {
+    @JsOverlay
+    static Keycloak.KeycloakConfigUnionType of(Object o) {
+      return Js.cast(o);
+    }
+
+    @JsOverlay
+    default String asUrl() {
+      return Js.asString(this);
+    }
+
+    @JsOverlay
+    default KeycloakConfig asConfig() {
+      return Js.cast(this);
+    }
   }
 
-  @JsOverlay
-  public static Keycloak create(String configUrl) {
-    Keycloak keycloak = KeycloakDom.window.Keycloak(configUrl);
-    KeycloakDom.window.keycloak = keycloak;
-    return KeycloakDom.window.keycloak;
-  }
+  @JsConstructor
+  public Keycloak(KeycloakConfigUnionType config) {}
 
   public boolean authenticated;
-  public String token;
-  public JsObject parsedToken;
   public String subject;
-  public String idToken;
-  public JsObject idTokenParsed;
-  public JsArray<String> realmAccess;
-  public JsArray<String> resourceAccess;
-  public String refreshToken;
-  public JsObject refreshTokenParsed;
-  public double timeSkew;
   public String responseMode;
-  public String flow;
-  public String adapter;
   public String responseType;
+  public String flow;
+  public KeycloakRoles realmAccess;
+  public KeycloakResourceAccess resourceAccess;
+  public String token;
+  public KeycloakTokenParsed parsedToken;
+  public String refreshToken;
+  public KeycloakTokenParsed refreshTokenParsed;
+  public String idToken;
+  public KeycloakTokenParsed idTokenParsed;
+  public double timeSkew;
+  public boolean loginRequired;
+  public String authServerUrl;
+  public String realm;
+  public String clientId;
+  public String clientSecret;
+  public String redirectUri;
+  public String sessionId;
+  public KeycloakProfile profile;
+  public JsObject userInfo;
 
-  public OnReadyListener onReady;
-  public OnAuthErrorListener onAuthError;
-  public OnAuthLogoutListener onAuthLogout;
-  public OnAuthRefreshErrorListener onAuthRefreshError;
-  public OnAuthRefreshSuccessListener onAuthRefreshSuccess;
-  public OnAuthSuccessListener onAuthSuccess;
-  public OnTokenExpiredListener onTokenExpired;
+  public String adapter;
 
-  public native Promise<Boolean> init(InitOptions initOptions);
+  public native void onReady(boolean authenticated);
 
-  public native void login(LoginOptions loginOptions);
+  public native void onAuthSuccess();
 
-  public native String createLoginUrl(LoginOptions loginOptions);
+  public native void onAuthError(KeycloakError errorDate);
 
-  public native void logout(LogoutOptions logoutOptions);
+  public native void onAuthRefreshSuccess();
 
-  public native String createLogoutUrl(LogoutOptions logoutOptions);
+  public native void onAuthRefreshError();
 
-  public native String register(LoginOptions loginOptions);
+  public native void onAuthLogout();
 
-  public native String createRegisterUrl(LoginOptions loginOptions);
+  public native void onTokenExpired();
 
-  public native void accountManagement();
+  public native void onActionUpdate(String status);
 
-  public native String createAccountUrl();
+  public native KeycloakPromise<Boolean, KeycloakError> init(KeycloakInitOptions initOptions);
+
+  public native KeycloakPromise<Void, Void> login(KeycloakLoginOptions options);
+
+  public native KeycloakPromise<Void, Void> login();
+
+  public native KeycloakPromise<Void, Void> logout(KeycloakLogoutOptions options);
+
+  public native KeycloakPromise<Void, Void> logout();
+
+  public native KeycloakPromise<Void, Void> register(KeycloakRegisterOptions options);
+
+  public native KeycloakPromise<Void, Void> register();
+
+  public native KeycloakPromise<Void, Void> accountManagement();
+
+  public native String createLoginUrl(KeycloakLoginOptions options);
+
+  public native String createLogoutUrl(KeycloakLogoutOptions options);
+
+  public native String createRegisterUrl(KeycloakRegisterOptions options);
+
+  public native String createAccountUrl(KeycloakAccountOptions options);
+
+  public native boolean isTokenExpired(double minValidity);
+
+  public native KeycloakPromise<Boolean, Boolean> updateToken(double minValidity);
+
+  public native void clearToken();
 
   public native boolean hasRealmRole(String role);
 
   public native boolean hasResourceRole(String role, String resource);
 
-  public native Promise<JsObject> loadUserProfile();
+  public native KeycloakPromise<KeycloakProfile, Void> loadUserProfile();
 
-  public native boolean isTokenExpired(double minValidity);
-
-  public native Promise<Boolean> updateToken(double minValidity);
-
-  public native void clearToken();
+  public native KeycloakPromise<JsObject, Void> loadUserInfo();
 }

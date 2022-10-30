@@ -16,27 +16,18 @@
 package org.dominokit.keycloak;
 
 import elemental2.core.JsObject;
-import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
-import jsinterop.base.Js;
-import jsinterop.base.JsPropertyMap;
 
 @JsType(isNative = true, namespace = JsPackage.GLOBAL)
-public interface LoginOptions {
+public interface KeycloakRegisterOptions {
 
-  @JsOverlay
-  public static LoginOptions create() {
-    return Js.uncheckedCast(JsPropertyMap.of());
-  }
+  @JsProperty
+  String getScope();
 
-  @JsOverlay
-  public static LoginOptions createRegisterOptions() {
-    LoginOptions loginOptions = Js.uncheckedCast(JsPropertyMap.of());
-    loginOptions.setAction("register");
-    return loginOptions;
-  }
+  @JsProperty
+  void setScope(String scope);
 
   @JsProperty
   String getRedirectUri();
@@ -47,6 +38,7 @@ public interface LoginOptions {
   @JsProperty
   String getPrompt();
 
+  /** @param prompt use a constant from {@link KeycloakPrompt} */
   @JsProperty
   void setPrompt(String prompt);
 
@@ -63,10 +55,10 @@ public interface LoginOptions {
   void setLoginHint(String loginHint);
 
   @JsProperty
-  String getScope();
+  Acr getAcr();
 
   @JsProperty
-  void setScope(String scope);
+  void setAcr(Acr acr);
 
   @JsProperty
   String getIdpHint();
@@ -75,22 +67,10 @@ public interface LoginOptions {
   void setIdpHint(String idpHint);
 
   @JsProperty
-  String getAction();
-
-  @JsProperty
-  void setAction(String action);
-
-  @JsProperty
   String getLocale();
 
   @JsProperty
   void setLocale(String locale);
-
-  @JsProperty
-  String getKcLocale();
-
-  @JsProperty
-  void setKcLocale(String kcLocale);
 
   @JsProperty
   JsObject getCordovaOptions();
