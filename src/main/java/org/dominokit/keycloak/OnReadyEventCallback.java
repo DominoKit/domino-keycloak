@@ -19,6 +19,6 @@ import jsinterop.annotations.JsFunction;
 
 @JsFunction
 @FunctionalInterface
-public interface EventCallback {
-  void invoke();
+public interface OnReadyEventCallback {
+  void invoke(boolean authenticated);
 }

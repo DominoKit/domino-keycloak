@@ -16,10 +16,7 @@
 package org.dominokit.keycloak;
 
 import elemental2.core.JsObject;
-import jsinterop.annotations.JsConstructor;
-import jsinterop.annotations.JsOverlay;
-import jsinterop.annotations.JsPackage;
-import jsinterop.annotations.JsType;
+import jsinterop.annotations.*;
 import jsinterop.base.Js;
 
 @JsType(isNative = true, namespace = JsPackage.GLOBAL, name = "Keycloak")
@@ -72,20 +69,6 @@ public class Keycloak extends JsObject {
 
   public String adapter;
 
-  public native EventCallback onReady(boolean authenticated);
-
-  public native EventCallback onAuthSuccess();
-
-  public native EventCallback onAuthError();
-
-  public native EventCallback onAuthRefreshSuccess();
-
-  public native EventCallback onAuthRefreshError();
-
-  public native EventCallback onAuthLogout();
-
-  public native EventCallback onTokenExpired();
-
   public native EventCallback onActionUpdate(String status);
 
   public native KeycloakPromise<Boolean, KeycloakError> init(KeycloakInitOptions initOptions);
@@ -125,4 +108,25 @@ public class Keycloak extends JsObject {
   public native KeycloakPromise<KeycloakProfile, Void> loadUserProfile();
 
   public native KeycloakPromise<JsObject, Void> loadUserInfo();
+
+  @JsProperty
+  public native void setOnReady(OnReadyEventCallback onReady);
+
+  @JsProperty
+  public native void setOnAuthSuccess(EventCallback onAuthSuccess);
+
+  @JsProperty
+  public native void setOnAuthError(EventCallback onAuthError);
+
+  @JsProperty
+  public native void setOnAuthRefreshSuccess(EventCallback onAuthRefreshSuccess);
+
+  @JsProperty
+  public native void setOnAuthRefreshError(EventCallback onAuthRefreshError);
+
+  @JsProperty
+  public native void setOnAuthLogout(EventCallback onAuthLogout);
+
+  @JsProperty
+  public native void setOnTokenExpired(EventCallback onTokenExpired);
 }
