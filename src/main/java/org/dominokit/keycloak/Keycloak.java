@@ -72,21 +72,21 @@ public class Keycloak extends JsObject {
 
   public String adapter;
 
-  public native void onReady(boolean authenticated);
+  public native EventCallback onReady(boolean authenticated);
 
-  public native void onAuthSuccess();
+  public native EventCallback onAuthSuccess();
 
-  public native void onAuthError(KeycloakError errorDate);
+  public native EventCallback onAuthError();
 
-  public native void onAuthRefreshSuccess();
+  public native EventCallback onAuthRefreshSuccess();
 
-  public native void onAuthRefreshError();
+  public native EventCallback onAuthRefreshError();
 
-  public native void onAuthLogout();
+  public native EventCallback onAuthLogout();
 
-  public native void onTokenExpired();
+  public native EventCallback onTokenExpired();
 
-  public native void onActionUpdate(String status);
+  public native EventCallback onActionUpdate(String status);
 
   public native KeycloakPromise<Boolean, KeycloakError> init(KeycloakInitOptions initOptions);
 
