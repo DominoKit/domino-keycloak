@@ -15,7 +15,26 @@
  */
 package org.dominokit.keycloak;
 
-public interface KeycloakResponseMode {
-  String query = "query";
-  String fragment = "fragment";
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsType;
+import jsinterop.base.Js;
+
+@JsType(isNative = true, name = "?", namespace = JsPackage.GLOBAL)
+public interface KeycloakResponseModeUnionType {
+
+  @JsOverlay
+  static KeycloakResponseModeUnionType query() {
+    return Js.cast("query");
+  }
+
+  @JsOverlay
+  static KeycloakResponseModeUnionType fragment() {
+    return Js.cast("fragment");
+  }
+
+  @JsOverlay
+  default String asString() {
+    return Js.asString(this);
+  }
 }

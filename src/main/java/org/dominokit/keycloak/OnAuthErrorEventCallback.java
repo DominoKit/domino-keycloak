@@ -18,6 +18,7 @@ package org.dominokit.keycloak;
 import jsinterop.annotations.JsFunction;
 
 @JsFunction
-public interface KeycloakPromiseCallback<T> {
-  void onCallBack(T result);
+@FunctionalInterface
+public interface OnAuthErrorEventCallback {
+  void invoke(KeycloakError error);
 }

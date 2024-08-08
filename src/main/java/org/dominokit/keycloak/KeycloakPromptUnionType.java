@@ -15,9 +15,26 @@
  */
 package org.dominokit.keycloak;
 
-public class KeycloakAdapters {
-  public static final String _DEFAULT = "default";
-  public static final String CORDOVA = "cordova";
-  public static final String CORDOVA_NATIVE = "cordova-native";
-  public static final String custom = "custom";
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsType;
+import jsinterop.base.Js;
+
+@JsType(isNative = true, name = "?", namespace = JsPackage.GLOBAL)
+public interface KeycloakPromptUnionType {
+
+  @JsOverlay
+  static KeycloakPromptUnionType login() {
+    return Js.cast("login");
+  }
+
+  @JsOverlay
+  static KeycloakPromptUnionType none() {
+    return Js.cast("none");
+  }
+
+  @JsOverlay
+  default String asString() {
+    return Js.asString(this);
+  }
 }

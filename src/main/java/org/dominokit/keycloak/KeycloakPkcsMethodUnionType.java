@@ -15,7 +15,31 @@
  */
 package org.dominokit.keycloak;
 
-public interface KeycloakOnLoad {
-  String login_required = "login-required";
-  String check_sso = "check-sso";
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsType;
+import jsinterop.base.Js;
+
+@JsType(isNative = true, name = "?", namespace = JsPackage.GLOBAL)
+public interface KeycloakPkcsMethodUnionType {
+
+  @JsOverlay
+  static KeycloakPkcsMethodUnionType _S256() {
+    return Js.cast("S256");
+  }
+
+  @JsOverlay
+  static KeycloakPkcsMethodUnionType _false() {
+    return Js.cast(false);
+  }
+
+  @JsOverlay
+  default String asString() {
+    return Js.asString(this);
+  }
+
+  @JsOverlay
+  default boolean asBoolean() {
+    return Js.asBoolean(this);
+  }
 }

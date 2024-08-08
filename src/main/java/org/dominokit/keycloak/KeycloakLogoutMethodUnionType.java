@@ -15,6 +15,26 @@
  */
 package org.dominokit.keycloak;
 
-public interface KeycloakPkceMethod {
-  String S256 = "S256";
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsType;
+import jsinterop.base.Js;
+
+@JsType(isNative = true, name = "?", namespace = JsPackage.GLOBAL)
+public interface KeycloakLogoutMethodUnionType {
+
+  @JsOverlay
+  static KeycloakLogoutMethodUnionType _GET() {
+    return Js.cast("GET");
+  }
+
+  @JsOverlay
+  static KeycloakLogoutMethodUnionType _POST() {
+    return Js.cast("POST");
+  }
+
+  @JsOverlay
+  default String asString() {
+    return Js.asString(this);
+  }
 }

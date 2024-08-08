@@ -17,28 +17,39 @@ package org.dominokit.keycloak;
 
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
-import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import jsinterop.base.Js;
-import jsinterop.base.JsPropertyMap;
 
-@JsType(isNative = true, namespace = JsPackage.GLOBAL)
-public interface KeycloakLogoutOptions {
+@JsType(isNative = true, name = "?", namespace = JsPackage.GLOBAL)
+public interface KeycloakAdapterUnionType {
 
   @JsOverlay
-  public static KeycloakLogoutOptions create() {
-    return Js.uncheckedCast(JsPropertyMap.of());
+  static KeycloakAdapterUnionType _default() {
+    return Js.cast("default");
   }
 
-  @JsProperty
-  String getRedirectUri();
+  @JsOverlay
+  static KeycloakAdapterUnionType cordova() {
+    return Js.cast("cordova");
+  }
 
-  @JsProperty
-  void setRedirectUri(String redirectUri);
+  @JsOverlay
+  static KeycloakAdapterUnionType cordova_native() {
+    return Js.cast("cordova-native");
+  }
 
-  @JsProperty
-  KeycloakLogoutMethodUnionType getLogoutMethod();
+  @JsOverlay
+  static KeycloakAdapterUnionType adapter(KeycloakAdapter adapter) {
+    return Js.cast(adapter);
+  }
 
-  @JsProperty
-  void setLogoutMethod(KeycloakLogoutMethodUnionType logoutMethod);
+  @JsOverlay
+  default String asString() {
+    return Js.asString(this);
+  }
+
+  @JsOverlay
+  default KeycloakAdapter asKeycloakAdapter() {
+    return Js.cast(this);
+  }
 }

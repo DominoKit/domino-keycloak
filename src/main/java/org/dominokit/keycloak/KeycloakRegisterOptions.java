@@ -38,7 +38,7 @@ public interface KeycloakRegisterOptions {
   @JsProperty
   String getPrompt();
 
-  /** @param prompt use a constant from {@link KeycloakPrompt} */
+  /** @param prompt use a constant from {@link KeycloakPromptUnionType} */
   @JsProperty
   void setPrompt(String prompt);
 

@@ -51,11 +51,11 @@ public interface KeycloakLoginOptions {
   void setRedirectUri(String redirectUri);
 
   @JsProperty
-  String getPrompt();
+  KeycloakPromptUnionType getPrompt();
 
-  /** @param prompt use a constant from {@link KeycloakPrompt} */
+  /** @param prompt use a constant from {@link KeycloakPromptUnionType} */
   @JsProperty
-  void setPrompt(String prompt);
+  void setPrompt(KeycloakPromptUnionType prompt);
 
   @JsProperty
   String getAction();

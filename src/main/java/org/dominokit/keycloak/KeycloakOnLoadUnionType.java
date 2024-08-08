@@ -15,18 +15,26 @@
  */
 package org.dominokit.keycloak;
 
-import elemental2.promise.Promise;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
+import jsinterop.base.Js;
 
-@JsType(isNative = true, namespace = JsPackage.GLOBAL)
-public class KeycloakPromise<Success, Error> extends Promise<Success> {
+@JsType(isNative = true, name = "?", namespace = JsPackage.GLOBAL)
+public interface KeycloakOnLoadUnionType {
 
-  public KeycloakPromise(PromiseExecutorCallbackFn<Success> executor) {
-    super(executor);
+  @JsOverlay
+  static KeycloakOnLoadUnionType login_required() {
+    return Js.cast("login-required");
   }
 
-  public native KeycloakPromise<Success, Error> success(KeycloakPromiseCallback<Success> callback);
+  @JsOverlay
+  static KeycloakOnLoadUnionType check_sso() {
+    return Js.cast("check-sso");
+  }
 
-  public native KeycloakPromise<Success, Error> error(KeycloakPromiseCallback<Error> callback);
+  @JsOverlay
+  default String asString() {
+    return Js.asString(this);
+  }
 }

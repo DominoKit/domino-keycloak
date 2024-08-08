@@ -16,6 +16,7 @@
 package org.dominokit.keycloak;
 
 import elemental2.core.JsObject;
+import elemental2.promise.Promise;
 import jsinterop.annotations.*;
 import jsinterop.base.Js;
 
@@ -45,9 +46,9 @@ public class Keycloak extends JsObject {
 
   public boolean authenticated;
   public String subject;
-  public String responseMode;
-  public String responseType;
-  public String flow;
+  public KeycloakResponseModeUnionType responseMode;
+  public KeycloakResponseTypeUnionType responseType;
+  public KeycloakFlowUnionType flow;
   public KeycloakRoles realmAccess;
   public KeycloakResourceAccess resourceAccess;
   public String token;
@@ -67,25 +68,23 @@ public class Keycloak extends JsObject {
   public KeycloakProfile profile;
   public JsObject userInfo;
 
-  public String adapter;
-
   public native EventCallback onActionUpdate(String status);
 
-  public native KeycloakPromise<Boolean, KeycloakError> init(KeycloakInitOptions initOptions);
+  public native Promise<Boolean> init(KeycloakInitOptions initOptions);
 
-  public native KeycloakPromise<Void, Void> login(KeycloakLoginOptions options);
+  public native Promise<Void> login(KeycloakLoginOptions options);
 
-  public native KeycloakPromise<Void, Void> login();
+  public native Promise<Void> login();
 
-  public native KeycloakPromise<Void, Void> logout(KeycloakLogoutOptions options);
+  public native Promise<Void> logout(KeycloakLogoutOptions options);
 
-  public native KeycloakPromise<Void, Void> logout();
+  public native Promise<Void> logout();
 
-  public native KeycloakPromise<Void, Void> register(KeycloakRegisterOptions options);
+  public native Promise<Void> register(KeycloakRegisterOptions options);
 
-  public native KeycloakPromise<Void, Void> register();
+  public native Promise<Void> register();
 
-  public native KeycloakPromise<Void, Void> accountManagement();
+  public native Promise<Void> accountManagement();
 
   public native String createLoginUrl(KeycloakLoginOptions options);
 
@@ -97,7 +96,7 @@ public class Keycloak extends JsObject {
 
   public native boolean isTokenExpired(double minValidity);
 
-  public native KeycloakPromise<Boolean, Boolean> updateToken(double minValidity);
+  public native Promise<Boolean> updateToken(double minValidity);
 
   public native void clearToken();
 
@@ -105,9 +104,9 @@ public class Keycloak extends JsObject {
 
   public native boolean hasResourceRole(String role, String resource);
 
-  public native KeycloakPromise<KeycloakProfile, Void> loadUserProfile();
+  public native Promise<KeycloakProfile> loadUserProfile();
 
-  public native KeycloakPromise<JsObject, Void> loadUserInfo();
+  public native Promise<JsObject> loadUserInfo();
 
   @JsProperty
   public native void setOnReady(OnReadyEventCallback onReady);
@@ -116,7 +115,7 @@ public class Keycloak extends JsObject {
   public native void setOnAuthSuccess(EventCallback onAuthSuccess);
 
   @JsProperty
-  public native void setOnAuthError(EventCallback onAuthError);
+  public native void setOnAuthError(OnAuthErrorEventCallback onAuthError);
 
   @JsProperty
   public native void setOnAuthRefreshSuccess(EventCallback onAuthRefreshSuccess);
