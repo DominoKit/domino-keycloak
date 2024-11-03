@@ -6,7 +6,7 @@
 
   <groupId>org.dominokit</groupId>
   <artifactId>domino-keycloak</artifactId>
-  <version>HEAD-SNAPSHOT</version>
+  <version>3.0.0-25.0.x</version>
 
   <name>domino-keycloak</name>
 
