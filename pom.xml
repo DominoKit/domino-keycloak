@@ -6,7 +6,7 @@
 
   <groupId>org.dominokit</groupId>
   <artifactId>domino-keycloak</artifactId>
-  <version>3.0.0-25.0.x</version>
+  <version>HEAD-SNAPSHOT</version>
 
   <name>domino-keycloak</name>
 
@@ -64,7 +64,7 @@
 
   <properties>
     <snapshot.version>HEAD-SNAPSHOT</snapshot.version>
-    <next.release.version>3.0.0-25.0.x</next.release.version>
+    <next.release.version>3.0.0-26.0.x</next.release.version>
 
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
