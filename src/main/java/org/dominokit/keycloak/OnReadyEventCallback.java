@@ -15,8 +15,10 @@
  */
 package org.dominokit.keycloak;
 
-public interface KeycloakResponseType {
-  String code = "code";
-  String id_token__token = "id_token token";
-  String code__id_token__token = "code id_token token";
+import jsinterop.annotations.JsFunction;
+
+@JsFunction
+@FunctionalInterface
+public interface OnReadyEventCallback {
+  void invoke(boolean authenticated);
 }

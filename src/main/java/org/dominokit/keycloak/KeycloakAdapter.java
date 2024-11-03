@@ -16,19 +16,20 @@
 package org.dominokit.keycloak;
 
 import elemental2.core.JsObject;
+import elemental2.promise.Promise;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 
 @JsType(isNative = true, namespace = JsPackage.GLOBAL)
 public interface KeycloakAdapter {
 
-  KeycloakPromise<Void, Void> login(KeycloakLoginOptions options);
+  Promise<Void> login(KeycloakLoginOptions options);
 
-  KeycloakPromise<Void, Void> logout(KeycloakLogoutOptions options);
+  Promise<Void> logout(KeycloakLogoutOptions options);
 
-  KeycloakPromise<Void, Void> register(KeycloakRegisterOptions options);
+  Promise<Void> register(KeycloakRegisterOptions options);
 
-  KeycloakPromise<Void, Void> register();
+  Promise<Void> accountManagement();
 
   String redirectUri(JsObject options, boolean encodeHash);
 }

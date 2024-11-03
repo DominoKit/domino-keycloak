@@ -15,7 +15,10 @@
  */
 package org.dominokit.keycloak;
 
-public class KeycloakPrompt {
-  public static final String login = "login";
-  public static final String none = "none";
+import jsinterop.annotations.JsFunction;
+
+@JsFunction
+@FunctionalInterface
+public interface OnAuthErrorEventCallback {
+  void invoke(KeycloakError error);
 }

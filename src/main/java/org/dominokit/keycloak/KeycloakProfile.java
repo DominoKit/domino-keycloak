@@ -15,6 +15,7 @@
  */
 package org.dominokit.keycloak;
 
+import elemental2.core.JsObject;
 import jsinterop.annotations.JsProperty;
 
 public interface KeycloakProfile {
@@ -72,4 +73,10 @@ public interface KeycloakProfile {
 
   @JsProperty
   void setCreatedTimestamp(double createdTimestamp);
+
+  @JsProperty
+  JsObject getAttributes();
+
+  @JsProperty
+  void setAttributes(JsObject attributes);
 }

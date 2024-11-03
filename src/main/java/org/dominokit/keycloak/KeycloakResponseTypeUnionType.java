@@ -17,28 +17,29 @@ package org.dominokit.keycloak;
 
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
-import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import jsinterop.base.Js;
-import jsinterop.base.JsPropertyMap;
 
-@JsType(isNative = true, namespace = JsPackage.GLOBAL)
-public interface KeycloakLogoutOptions {
+@JsType(isNative = true, name = "?", namespace = JsPackage.GLOBAL)
+public interface KeycloakResponseTypeUnionType {
 
   @JsOverlay
-  public static KeycloakLogoutOptions create() {
-    return Js.uncheckedCast(JsPropertyMap.of());
+  static KeycloakResponseTypeUnionType code() {
+    return Js.cast("code");
   }
 
-  @JsProperty
-  String getRedirectUri();
+  @JsOverlay
+  static KeycloakResponseTypeUnionType id_token__token() {
+    return Js.cast("id_token token");
+  }
 
-  @JsProperty
-  void setRedirectUri(String redirectUri);
+  @JsOverlay
+  static KeycloakResponseTypeUnionType code__id_token__token() {
+    return Js.cast("code id_token token");
+  }
 
-  @JsProperty
-  KeycloakLogoutMethodUnionType getLogoutMethod();
-
-  @JsProperty
-  void setLogoutMethod(KeycloakLogoutMethodUnionType logoutMethod);
+  @JsOverlay
+  default String asString() {
+    return Js.asString(this);
+  }
 }

@@ -15,8 +15,26 @@
  */
 package org.dominokit.keycloak;
 
-public class KeycloakFlow {
-  public static final String standard = "standard";
-  public static final String implicit = "implicit";
-  public static final String hybrid = "hybrid";
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsType;
+import jsinterop.base.Js;
+
+@JsType(isNative = true, name = "?", namespace = JsPackage.GLOBAL)
+public interface KeycloakPromptUnionType {
+
+  @JsOverlay
+  static KeycloakPromptUnionType login() {
+    return Js.cast("login");
+  }
+
+  @JsOverlay
+  static KeycloakPromptUnionType none() {
+    return Js.cast("none");
+  }
+
+  @JsOverlay
+  default String asString() {
+    return Js.asString(this);
+  }
 }

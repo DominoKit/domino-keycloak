@@ -15,7 +15,26 @@
  */
 package org.dominokit.keycloak;
 
-public interface KeycloakResponseMode {
-  String query = "query";
-  String fragment = "fragment";
+import jsinterop.annotations.JsOverlay;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsType;
+import jsinterop.base.Js;
+
+@JsType(isNative = true, name = "?", namespace = JsPackage.GLOBAL)
+public interface KeycloakOnLoadUnionType {
+
+  @JsOverlay
+  static KeycloakOnLoadUnionType login_required() {
+    return Js.cast("login-required");
+  }
+
+  @JsOverlay
+  static KeycloakOnLoadUnionType check_sso() {
+    return Js.cast("check-sso");
+  }
+
+  @JsOverlay
+  default String asString() {
+    return Js.asString(this);
+  }
 }

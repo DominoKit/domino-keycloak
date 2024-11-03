@@ -15,18 +15,26 @@
  */
 package org.dominokit.keycloak;
 
-import elemental2.promise.Promise;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
+import jsinterop.base.Js;
 
-@JsType(isNative = true, namespace = JsPackage.GLOBAL)
-public class KeycloakPromise<Success, Error> extends Promise<Success> {
+@JsType(isNative = true, name = "?", namespace = JsPackage.GLOBAL)
+public interface KeycloakLogoutMethodUnionType {
 
-  public KeycloakPromise(PromiseExecutorCallbackFn<Success> executor) {
-    super(executor);
+  @JsOverlay
+  static KeycloakLogoutMethodUnionType _GET() {
+    return Js.cast("GET");
   }
 
-  public native KeycloakPromise<Success, Error> success(KeycloakPromiseCallback<Success> callback);
+  @JsOverlay
+  static KeycloakLogoutMethodUnionType _POST() {
+    return Js.cast("POST");
+  }
 
-  public native KeycloakPromise<Success, Error> error(KeycloakPromiseCallback<Error> callback);
+  @JsOverlay
+  default String asString() {
+    return Js.asString(this);
+  }
 }
