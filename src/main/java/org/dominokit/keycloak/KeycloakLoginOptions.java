@@ -53,7 +53,9 @@ public interface KeycloakLoginOptions {
   @JsProperty
   KeycloakPromptUnionType getPrompt();
 
-  /** @param prompt use a constant from {@link KeycloakPromptUnionType} */
+  /**
+   * @param prompt use a constant from {@link KeycloakPromptUnionType}
+   */
   @JsProperty
   void setPrompt(KeycloakPromptUnionType prompt);
 

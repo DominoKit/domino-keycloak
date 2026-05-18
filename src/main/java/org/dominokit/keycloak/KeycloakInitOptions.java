@@ -52,7 +52,9 @@ public interface KeycloakInitOptions {
   @JsProperty
   KeycloakOnLoadUnionType getOnLoad();
 
-  /** @param onLoad Use a constant from {@link KeycloakOnLoadUnionType} */
+  /**
+   * @param onLoad Use a constant from {@link KeycloakOnLoadUnionType}
+   */
   @JsProperty
   void setOnLoad(KeycloakOnLoadUnionType onLoad);
 
@@ -95,7 +97,9 @@ public interface KeycloakInitOptions {
   @JsProperty
   KeycloakResponseModeUnionType getResponseMode();
 
-  /** @param responseMode use a constant from {@link KeycloakResponseModeUnionType} */
+  /**
+   * @param responseMode use a constant from {@link KeycloakResponseModeUnionType}
+   */
   @JsProperty
   void setResponseMode(KeycloakResponseModeUnionType responseMode);
 
@@ -120,14 +124,18 @@ public interface KeycloakInitOptions {
   @JsProperty
   KeycloakFlowUnionType getFlow();
 
-  /** @param flow use a constant from {@link KeycloakFlowUnionType} */
+  /**
+   * @param flow use a constant from {@link KeycloakFlowUnionType}
+   */
   @JsProperty
   void setFlow(KeycloakFlowUnionType flow);
 
   @JsProperty
   KeycloakPkcsMethodUnionType getPkceMethod();
 
-  /** @param pkceMethod use a constant from {@link KeycloakPkceMethod} */
+  /**
+   * @param pkceMethod use a constant from {@link KeycloakPkceMethod}
+   */
   @JsProperty
   void setPkceMethod(KeycloakPkcsMethodUnionType pkceMethod);
 

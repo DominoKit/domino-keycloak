@@ -34,6 +34,7 @@ from your J2CL code without writing JS glue.
 - Lightweight: no runtime logic beyond interop bindings
 
 ## Requirements
+- Java 17 or newer
 - A Keycloak server and a configured client
 - The Keycloak JS adapter (`keycloak.js`) available at runtime
 - GWT3/J2CL build with Elemental2

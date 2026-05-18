@@ -55,8 +55,7 @@
     <snapshot.version>HEAD-SNAPSHOT</snapshot.version>
     <next.release.version>3.0.0-26.2.x</next.release.version>
 
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
+    <maven.compiler.release>17</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -66,11 +65,11 @@
     <maven.gpg.plugin>1.6</maven.gpg.plugin>
     <maven.central.publishing.plugin>0.10.0</maven.central.publishing.plugin>
     <maven.deploy.plugin>3.0.0-M1</maven.deploy.plugin>
-    <maven.fmt.plugin>2.9</maven.fmt.plugin>
+    <maven.spotless.plugin>3.4.0</maven.spotless.plugin>
     <maven.install.plugin>3.0.0-M1</maven.install.plugin>
     <maven.license.plugin>3.0</maven.license.plugin>
     <maven.surfire.plugin>3.0.0-M1</maven.surfire.plugin>
-    <maven.gwt.plugin>1.1.0</maven.gwt.plugin>
+    <maven.gwt.plugin>1.2.0</maven.gwt.plugin>
     <elemental2.version>1.2.3</elemental2.version>
   </properties>
 
@@ -106,15 +105,15 @@
         <version>${maven.gwt.plugin}</version>
         <extensions>true</extensions>
         <configuration>
-          <sourceLevel>1.8</sourceLevel>
+          <sourceLevel>11</sourceLevel>
           <failOnError>true</failOnError>
           <moduleName>org.dominokit.keycloak</moduleName>
         </configuration>
       </plugin>
       <plugin>
-        <groupId>com.coveo</groupId>
-        <artifactId>fmt-maven-plugin</artifactId>
-        <version>${maven.fmt.plugin}</version>
+        <groupId>com.diffplug.spotless</groupId>
+        <artifactId>spotless-maven-plugin</artifactId>
+        <version>${maven.spotless.plugin}</version>
         <executions>
           <execution>
             <goals>
@@ -122,6 +121,12 @@
             </goals>
           </execution>
         </executions>
+        <configuration>
+          <java>
+            <removeUnusedImports/>
+            <googleJavaFormat/>
+          </java>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>com.mycila</groupId>
@@ -203,8 +208,7 @@
           <artifactId>maven-compiler-plugin</artifactId>
           <version>${maven.compiler.plugin}</version>
           <configuration>
-            <source>${maven.compiler.source}</source>
-            <target>${maven.compiler.target}</target>
+            <release>${maven.compiler.release}</release>
           </configuration>
         </plugin>
         <plugin>
@@ -293,10 +297,6 @@
             <artifactId>gwt-maven-plugin</artifactId>
           </plugin>
           <plugin>
-            <groupId>com.coveo</groupId>
-            <artifactId>fmt-maven-plugin</artifactId>
-          </plugin>
-          <plugin>
             <groupId>com.mycila</groupId>
             <artifactId>license-maven-plugin</artifactId>
           </plugin>
@@ -328,10 +328,6 @@
           <plugin>
             <groupId>net.ltgt.gwt.maven</groupId>
             <artifactId>gwt-maven-plugin</artifactId>
-          </plugin>
-          <plugin>
-            <groupId>com.coveo</groupId>
-            <artifactId>fmt-maven-plugin</artifactId>
           </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
