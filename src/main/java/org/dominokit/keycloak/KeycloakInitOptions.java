@@ -38,10 +38,10 @@ public interface KeycloakInitOptions {
   }
 
   @JsProperty
-  Boolean isUseNonce();
+  boolean isUseNonce();
 
   @JsProperty
-  void setUseNonce(Boolean useNonce);
+  void setUseNonce(boolean useNonce);
 
   @JsProperty
   KeycloakAdapterUnionType getAdapter();
@@ -77,19 +77,19 @@ public interface KeycloakInitOptions {
   void setIdToken(String idToken);
 
   @JsProperty
-  Double getTimeSkew();
+  double getTimeSkew();
 
   @JsProperty
-  void setTimeSkew(Double timeSkew);
+  void setTimeSkew(double timeSkew);
 
   @JsProperty
-  Boolean isCheckLoginIframe();
+  boolean isCheckLoginIframe();
 
   @JsProperty
-  void setCheckLoginIframe(Boolean checkLoginIframe);
+  void setCheckLoginIframe(boolean checkLoginIframe);
 
   @JsProperty
-  Double getCheckLoginIframeInterval();
+  double getCheckLoginIframeInterval();
 
   @JsProperty
   void setCheckLoginIframeInterval(Double checkLoginIframeInterval);
@@ -116,10 +116,10 @@ public interface KeycloakInitOptions {
   void setSilentCheckSsoRedirectUri(String silentCheckSsoRedirectUri);
 
   @JsProperty
-  Boolean isSilentCheckSsoFallback();
+  boolean isSilentCheckSsoFallback();
 
   @JsProperty
-  void setSilentCheckSsoFallback(Boolean silentCheckSsoFallback);
+  void setSilentCheckSsoFallback(boolean silentCheckSsoFallback);
 
   @JsProperty
   KeycloakFlowUnionType getFlow();
@@ -140,10 +140,10 @@ public interface KeycloakInitOptions {
   void setPkceMethod(KeycloakPkcsMethodUnionType pkceMethod);
 
   @JsProperty
-  Boolean isEnableLogging();
+  boolean isEnableLogging();
 
   @JsProperty
-  void setEnableLogging(Boolean enableLogging);
+  void setEnableLogging(boolean enableLogging);
 
   @JsProperty
   String getScope();
@@ -152,10 +152,10 @@ public interface KeycloakInitOptions {
   void setScope(String scope);
 
   @JsProperty
-  Double getMessageReceiveTimeout();
+  double getMessageReceiveTimeout();
 
   @JsProperty
-  void setMessageReceiveTimeout(Double messageReceiveTimeout);
+  void setMessageReceiveTimeout(double messageReceiveTimeout);
 
   @JsProperty
   String getLocale();

@@ -15,7 +15,6 @@
  */
 package org.dominokit.keycloak;
 
-import elemental2.core.JsObject;
 import jsinterop.annotations.JsProperty;
 
 public interface KeycloakProfile {
@@ -51,32 +50,32 @@ public interface KeycloakProfile {
   void setLastName(String lastName);
 
   @JsProperty
-  Boolean isEnabled();
+  boolean isEnabled();
 
   @JsProperty
-  void setEnabled(Boolean enabled);
+  void setEnabled(boolean enabled);
 
   @JsProperty
-  Boolean isEmailVerified();
+  boolean isEmailVerified();
 
   @JsProperty
-  void setEmailVerified(Boolean emailVerified);
+  void setEmailVerified(boolean emailVerified);
 
   @JsProperty
-  Boolean isTotp();
+  boolean isTotp();
 
   @JsProperty
-  void setTotp(Boolean totp);
+  void setTotp(boolean totp);
 
   @JsProperty
-  Double getCreatedTimestamp();
+  double getCreatedTimestamp();
 
   @JsProperty
-  void setCreatedTimestamp(Double createdTimestamp);
+  void setCreatedTimestamp(double createdTimestamp);
 
   @JsProperty
-  JsObject getAttributes();
+  KeycloakProfileAttributes getAttributes();
 
   @JsProperty
-  void setAttributes(JsObject attributes);
+  void setAttributes(KeycloakProfileAttributes attributes);
 }

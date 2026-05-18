@@ -15,7 +15,6 @@
  */
 package org.dominokit.keycloak;
 
-import elemental2.core.JsObject;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
@@ -66,10 +65,10 @@ public interface KeycloakLoginOptions {
   void setAction(String action);
 
   @JsProperty
-  Double getMaxAge();
+  double getMaxAge();
 
   @JsProperty
-  void setMaxAge(Double maxAge);
+  void setMaxAge(double maxAge);
 
   @JsProperty
   String getLoginHint();
@@ -102,8 +101,8 @@ public interface KeycloakLoginOptions {
   void setLocale(String locale);
 
   @JsProperty
-  JsObject getCordovaOptions();
+  KeycloakCordovaOptions getCordovaOptions();
 
   @JsProperty
-  void setCordovaOptions(JsObject cordovaOptions);
+  void setCordovaOptions(KeycloakCordovaOptions cordovaOptions);
 }

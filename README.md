@@ -175,7 +175,8 @@ Union-type constants are provided as static factory methods:
 - Realm roles: `keycloak.realmAccess` and `keycloak.hasRealmRole(...)`
 - Resource roles: `keycloak.resourceAccess` and `keycloak.hasResourceRole(...)`
 - User profile: `keycloak.loadUserProfile()`
-- User info: `keycloak.loadUserInfo()` returns `KeycloakUserInfo`
+- Profile attributes: `KeycloakProfile.getAttributes()` returns `KeycloakProfileAttributes`
+- User info: `keycloak.loadUserInfo()` returns `KeycloakUserInfo` with typed OpenID claims and map-style access for extra claims
 
 Parsed token data is exposed via `KeycloakTokenParsed` (`tokenParsed`,
 `refreshTokenParsed`, and `idTokenParsed`).
