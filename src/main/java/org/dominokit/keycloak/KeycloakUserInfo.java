@@ -15,7 +15,6 @@
  */
 package org.dominokit.keycloak;
 
-import elemental2.core.JsMap;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
@@ -25,124 +24,124 @@ import jsinterop.base.Js;
 import jsinterop.base.JsPropertyMap;
 
 @JsType(isNative = true, namespace = JsPackage.GLOBAL)
-public class KeycloakUserInfo extends JsMap<String, Any> {
-
-  @JsProperty
-  native String getSub();
-
-  @JsProperty
-  native void setSub(String sub);
-
-  @JsProperty
-  native String getName();
-
-  @JsProperty
-  native void setName(String name);
-
-  @JsProperty(name = "preferred_username")
-  native String getPreferredUsername();
-
-  @JsProperty(name = "preferred_username")
-  native void setPreferredUsername(String preferredUsername);
-
-  @JsProperty(name = "given_name")
-  native String getGivenName();
-
-  @JsProperty(name = "given_name")
-  native void setGivenName(String givenName);
-
-  @JsProperty(name = "family_name")
-  native String getFamilyName();
-
-  @JsProperty(name = "family_name")
-  native void setFamilyName(String familyName);
-
-  @JsProperty(name = "middle_name")
-  native String getMiddleName();
-
-  @JsProperty(name = "middle_name")
-  native void setMiddleName(String middleName);
-
-  @JsProperty
-  native String getNickname();
-
-  @JsProperty
-  native void setNickname(String nickname);
-
-  @JsProperty
-  native String getProfile();
-
-  @JsProperty
-  native void setProfile(String profile);
-
-  @JsProperty
-  native String getPicture();
-
-  @JsProperty
-  native void setPicture(String picture);
-
-  @JsProperty
-  native String getWebsite();
-
-  @JsProperty
-  native void setWebsite(String website);
-
-  @JsProperty
-  native String getEmail();
-
-  @JsProperty
-  native void setEmail(String email);
-
-  @JsProperty(name = "email_verified")
-  native boolean isEmailVerified();
-
-  @JsProperty(name = "email_verified")
-  native void setEmailVerified(boolean emailVerified);
-
-  @JsProperty
-  native String getGender();
-
-  @JsProperty
-  native void setGender(String gender);
-
-  @JsProperty
-  native String getBirthdate();
-
-  @JsProperty
-  native void setBirthdate(String birthdate);
-
-  @JsProperty
-  native String getZoneinfo();
-
-  @JsProperty
-  native void setZoneinfo(String zoneinfo);
-
-  @JsProperty
-  native String getLocale();
-
-  @JsProperty
-  native void setLocale(String locale);
-
-  @JsProperty(name = "phone_number")
-  native String getPhoneNumber();
-
-  @JsProperty(name = "phone_number")
-  native void setPhoneNumber(String phoneNumber);
-
-  @JsProperty(name = "phone_number_verified")
-  native boolean isPhoneNumberVerified();
-
-  @JsProperty(name = "phone_number_verified")
-  native void setPhoneNumberVerified(boolean phoneNumberVerified);
-
-  @JsProperty(name = "updated_at")
-  native double getUpdatedAt();
-
-  @JsProperty(name = "updated_at")
-  native void setUpdatedAt(double updatedAt);
+public interface KeycloakUserInfo extends JsPropertyMap<Any> {
 
   @JsOverlay
-  public static KeycloakUserInfo create() {
+  static KeycloakUserInfo create() {
     return Js.uncheckedCast(JsPropertyMap.of());
   }
+
+  @JsProperty
+  String getSub();
+
+  @JsProperty
+  void setSub(String sub);
+
+  @JsProperty
+  String getName();
+
+  @JsProperty
+  void setName(String name);
+
+  @JsProperty(name = "preferred_username")
+  String getPreferredUsername();
+
+  @JsProperty(name = "preferred_username")
+  void setPreferredUsername(String preferredUsername);
+
+  @JsProperty(name = "given_name")
+  String getGivenName();
+
+  @JsProperty(name = "given_name")
+  void setGivenName(String givenName);
+
+  @JsProperty(name = "family_name")
+  String getFamilyName();
+
+  @JsProperty(name = "family_name")
+  void setFamilyName(String familyName);
+
+  @JsProperty(name = "middle_name")
+  String getMiddleName();
+
+  @JsProperty(name = "middle_name")
+  void setMiddleName(String middleName);
+
+  @JsProperty
+  String getNickname();
+
+  @JsProperty
+  void setNickname(String nickname);
+
+  @JsProperty
+  String getProfile();
+
+  @JsProperty
+  void setProfile(String profile);
+
+  @JsProperty
+  String getPicture();
+
+  @JsProperty
+  void setPicture(String picture);
+
+  @JsProperty
+  String getWebsite();
+
+  @JsProperty
+  void setWebsite(String website);
+
+  @JsProperty
+  String getEmail();
+
+  @JsProperty
+  void setEmail(String email);
+
+  @JsProperty(name = "email_verified")
+  boolean isEmailVerified();
+
+  @JsProperty(name = "email_verified")
+  void setEmailVerified(boolean emailVerified);
+
+  @JsProperty
+  String getGender();
+
+  @JsProperty
+  void setGender(String gender);
+
+  @JsProperty
+  String getBirthdate();
+
+  @JsProperty
+  void setBirthdate(String birthdate);
+
+  @JsProperty
+  String getZoneinfo();
+
+  @JsProperty
+  void setZoneinfo(String zoneinfo);
+
+  @JsProperty
+  String getLocale();
+
+  @JsProperty
+  void setLocale(String locale);
+
+  @JsProperty(name = "phone_number")
+  String getPhoneNumber();
+
+  @JsProperty(name = "phone_number")
+  void setPhoneNumber(String phoneNumber);
+
+  @JsProperty(name = "phone_number_verified")
+  boolean isPhoneNumberVerified();
+
+  @JsProperty(name = "phone_number_verified")
+  void setPhoneNumberVerified(boolean phoneNumberVerified);
+
+  @JsProperty(name = "updated_at")
+  double getUpdatedAt();
+
+  @JsProperty(name = "updated_at")
+  void setUpdatedAt(double updatedAt);
 }
