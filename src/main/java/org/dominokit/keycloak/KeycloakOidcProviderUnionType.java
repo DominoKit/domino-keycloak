@@ -21,25 +21,20 @@ import jsinterop.annotations.JsType;
 import jsinterop.base.Js;
 
 @JsType(isNative = true, name = "?", namespace = JsPackage.GLOBAL)
-public interface KeycloakPromptUnionType {
+public interface KeycloakOidcProviderUnionType {
 
   @JsOverlay
-  static KeycloakPromptUnionType login() {
-    return Js.cast("login");
-  }
-
-  @JsOverlay
-  static KeycloakPromptUnionType none() {
-    return Js.cast("none");
-  }
-
-  @JsOverlay
-  static KeycloakPromptUnionType consent() {
-    return Js.cast("consent");
+  static KeycloakOidcProviderUnionType of(Object o) {
+    return Js.cast(o);
   }
 
   @JsOverlay
   default String asString() {
     return Js.asString(this);
+  }
+
+  @JsOverlay
+  default KeycloakOpenIdProviderMetadata asMetadata() {
+    return Js.cast(this);
   }
 }

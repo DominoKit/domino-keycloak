@@ -30,17 +30,18 @@ public interface KeycloakInitOptions {
     KeycloakInitOptions keycloakInitOptions = Js.uncheckedCast(JsPropertyMap.of());
     keycloakInitOptions.setUseNonce(true);
     keycloakInitOptions.setOnLoad(KeycloakOnLoadUnionType.login_required());
-    keycloakInitOptions.setCheckLoginIframeInterval(5);
+    keycloakInitOptions.setCheckLoginIframeInterval(5.0);
     keycloakInitOptions.setResponseMode(KeycloakResponseModeUnionType.fragment());
+    keycloakInitOptions.setSilentCheckSsoFallback(true);
     keycloakInitOptions.setEnableLogging(false);
     return keycloakInitOptions;
   }
 
   @JsProperty
-  boolean isUseNonce();
+  Boolean isUseNonce();
 
   @JsProperty
-  void setUseNonce(boolean useNonce);
+  void setUseNonce(Boolean useNonce);
 
   @JsProperty
   KeycloakAdapterUnionType getAdapter();
@@ -74,22 +75,22 @@ public interface KeycloakInitOptions {
   void setIdToken(String idToken);
 
   @JsProperty
-  double getTimeSkew();
+  Double getTimeSkew();
 
   @JsProperty
-  void setTimeSkew(double timeSkew);
+  void setTimeSkew(Double timeSkew);
 
   @JsProperty
-  boolean isCheckLoginIframe();
+  Boolean isCheckLoginIframe();
 
   @JsProperty
-  void setCheckLoginIframe(boolean checkLoginIframe);
+  void setCheckLoginIframe(Boolean checkLoginIframe);
 
   @JsProperty
-  double getCheckLoginIframeInterval();
+  Double getCheckLoginIframeInterval();
 
   @JsProperty
-  void setCheckLoginIframeInterval(double checkLoginIframeInterval);
+  void setCheckLoginIframeInterval(Double checkLoginIframeInterval);
 
   @JsProperty
   KeycloakResponseModeUnionType getResponseMode();
@@ -111,6 +112,12 @@ public interface KeycloakInitOptions {
   void setSilentCheckSsoRedirectUri(String silentCheckSsoRedirectUri);
 
   @JsProperty
+  Boolean isSilentCheckSsoFallback();
+
+  @JsProperty
+  void setSilentCheckSsoFallback(Boolean silentCheckSsoFallback);
+
+  @JsProperty
   KeycloakFlowUnionType getFlow();
 
   /** @param flow use a constant from {@link KeycloakFlowUnionType} */
@@ -125,10 +132,10 @@ public interface KeycloakInitOptions {
   void setPkceMethod(KeycloakPkcsMethodUnionType pkceMethod);
 
   @JsProperty
-  boolean isEnableLogging();
+  Boolean isEnableLogging();
 
   @JsProperty
-  void setEnableLogging(boolean enableLogging);
+  void setEnableLogging(Boolean enableLogging);
 
   @JsProperty
   String getScope();
@@ -137,10 +144,10 @@ public interface KeycloakInitOptions {
   void setScope(String scope);
 
   @JsProperty
-  double getMessageReceiveTimeout();
+  Double getMessageReceiveTimeout();
 
   @JsProperty
-  void setMessageReceiveTimeout(double messageReceiveTimeout);
+  void setMessageReceiveTimeout(Double messageReceiveTimeout);
 
   @JsProperty
   String getLocale();

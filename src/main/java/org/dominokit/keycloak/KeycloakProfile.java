@@ -51,28 +51,28 @@ public interface KeycloakProfile {
   void setLastName(String lastName);
 
   @JsProperty
-  boolean isEnabled();
+  Boolean isEnabled();
 
   @JsProperty
-  void setEnabled(boolean enabled);
+  void setEnabled(Boolean enabled);
 
   @JsProperty
-  boolean isEmailVerified();
+  Boolean isEmailVerified();
 
   @JsProperty
-  void setEmailVerified(boolean emailVerified);
+  void setEmailVerified(Boolean emailVerified);
 
   @JsProperty
-  boolean isTotp();
+  Boolean isTotp();
 
   @JsProperty
-  void setTotp(boolean totp);
+  void setTotp(Boolean totp);
 
   @JsProperty
-  double getCreatedTimestamp();
+  Double getCreatedTimestamp();
 
   @JsProperty
-  void setCreatedTimestamp(double createdTimestamp);
+  void setCreatedTimestamp(Double createdTimestamp);
 
   @JsProperty
   JsObject getAttributes();

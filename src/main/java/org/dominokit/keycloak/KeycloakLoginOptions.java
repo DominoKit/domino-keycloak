@@ -64,16 +64,22 @@ public interface KeycloakLoginOptions {
   void setAction(String action);
 
   @JsProperty
-  double getMaxAge();
+  Double getMaxAge();
 
   @JsProperty
-  void setMaxAge(double maxAge);
+  void setMaxAge(Double maxAge);
 
   @JsProperty
   String getLoginHint();
 
   @JsProperty
   void setLoginHint(String loginHint);
+
+  @JsProperty
+  String getAcrValues();
+
+  @JsProperty
+  void setAcrValues(String acrValues);
 
   @JsProperty
   Acr getAcr();

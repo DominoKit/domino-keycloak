@@ -36,23 +36,29 @@ public interface KeycloakRegisterOptions {
   void setRedirectUri(String redirectUri);
 
   @JsProperty
-  String getPrompt();
+  KeycloakPromptUnionType getPrompt();
 
   /** @param prompt use a constant from {@link KeycloakPromptUnionType} */
   @JsProperty
-  void setPrompt(String prompt);
+  void setPrompt(KeycloakPromptUnionType prompt);
 
   @JsProperty
-  double getMaxAge();
+  Double getMaxAge();
 
   @JsProperty
-  void setMaxAge(double maxAge);
+  void setMaxAge(Double maxAge);
 
   @JsProperty
   String getLoginHint();
 
   @JsProperty
   void setLoginHint(String loginHint);
+
+  @JsProperty
+  String getAcrValues();
+
+  @JsProperty
+  void setAcrValues(String acrValues);
 
   @JsProperty
   Acr getAcr();

@@ -24,5 +24,7 @@ public class KeycloakWindow extends Window {
 
   public native Keycloak Keycloak();
 
+  public native Keycloak Keycloak(Keycloak.KeycloakConfigUnionType config);
+
   public native Keycloak Keycloak(String configUrl);
 }

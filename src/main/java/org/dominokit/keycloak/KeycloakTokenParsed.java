@@ -43,22 +43,22 @@ public class KeycloakTokenParsed extends JsMap<String, Any> {
   native void setAud(String aud);
 
   @JsProperty
-  native double getExp();
+  native Double getExp();
 
   @JsProperty
-  native void setIat(double exp);
+  native void setIat(Double iat);
 
   @JsProperty
-  native double getIat();
+  native Double getIat();
 
   @JsProperty
-  native void setExp(double exp);
+  native void setExp(Double exp);
 
   @JsProperty(name = "auth_time")
-  native double getAuthTime();
+  native Double getAuthTime();
 
   @JsProperty(name = "auth_time")
-  native void setAuthTime(double authTime);
+  native void setAuthTime(Double authTime);
 
   @JsProperty
   native String getNonce();

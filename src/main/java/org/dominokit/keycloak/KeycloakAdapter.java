@@ -15,7 +15,6 @@
  */
 package org.dominokit.keycloak;
 
-import elemental2.core.JsObject;
 import elemental2.promise.Promise;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
@@ -31,5 +30,5 @@ public interface KeycloakAdapter {
 
   Promise<Void> accountManagement();
 
-  String redirectUri(JsObject options, boolean encodeHash);
+  String redirectUri(KeycloakRedirectUriOptions options);
 }

@@ -15,31 +15,26 @@
  */
 package org.dominokit.keycloak;
 
+import elemental2.core.JsMap;
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
+import jsinterop.base.Any;
 import jsinterop.base.Js;
+import jsinterop.base.JsPropertyMap;
 
-@JsType(isNative = true, name = "?", namespace = JsPackage.GLOBAL)
-public interface KeycloakPromptUnionType {
+@JsType(isNative = true, namespace = JsPackage.GLOBAL)
+public class KeycloakUserInfo extends JsMap<String, Any> {
 
-  @JsOverlay
-  static KeycloakPromptUnionType login() {
-    return Js.cast("login");
-  }
+  @JsProperty
+  native String getSub();
 
-  @JsOverlay
-  static KeycloakPromptUnionType none() {
-    return Js.cast("none");
-  }
+  @JsProperty
+  native void setSub(String sub);
 
   @JsOverlay
-  static KeycloakPromptUnionType consent() {
-    return Js.cast("consent");
-  }
-
-  @JsOverlay
-  default String asString() {
-    return Js.asString(this);
+  public static KeycloakUserInfo create() {
+    return Js.uncheckedCast(JsPropertyMap.of());
   }
 }
