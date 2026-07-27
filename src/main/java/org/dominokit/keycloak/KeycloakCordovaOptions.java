@@ -19,27 +19,13 @@ import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
 import jsinterop.base.Js;
+import jsinterop.base.JsPropertyMap;
 
-@JsType(isNative = true, name = "?", namespace = JsPackage.GLOBAL)
-public interface KeycloakPromptUnionType {
-
-  @JsOverlay
-  static KeycloakPromptUnionType login() {
-    return Js.cast("login");
-  }
+@JsType(isNative = true, namespace = JsPackage.GLOBAL)
+public interface KeycloakCordovaOptions extends JsPropertyMap<String> {
 
   @JsOverlay
-  static KeycloakPromptUnionType none() {
-    return Js.cast("none");
-  }
-
-  @JsOverlay
-  static KeycloakPromptUnionType consent() {
-    return Js.cast("consent");
-  }
-
-  @JsOverlay
-  default String asString() {
-    return Js.asString(this);
+  static KeycloakCordovaOptions create() {
+    return Js.uncheckedCast(JsPropertyMap.of());
   }
 }

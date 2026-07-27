@@ -30,8 +30,9 @@ public interface KeycloakInitOptions {
     KeycloakInitOptions keycloakInitOptions = Js.uncheckedCast(JsPropertyMap.of());
     keycloakInitOptions.setUseNonce(true);
     keycloakInitOptions.setOnLoad(KeycloakOnLoadUnionType.login_required());
-    keycloakInitOptions.setCheckLoginIframeInterval(5);
+    keycloakInitOptions.setCheckLoginIframeInterval(5.0);
     keycloakInitOptions.setResponseMode(KeycloakResponseModeUnionType.fragment());
+    keycloakInitOptions.setSilentCheckSsoFallback(true);
     keycloakInitOptions.setEnableLogging(false);
     return keycloakInitOptions;
   }
@@ -51,7 +52,9 @@ public interface KeycloakInitOptions {
   @JsProperty
   KeycloakOnLoadUnionType getOnLoad();
 
-  /** @param onLoad Use a constant from {@link KeycloakOnLoadUnionType} */
+  /**
+   * @param onLoad Use a constant from {@link KeycloakOnLoadUnionType}
+   */
   @JsProperty
   void setOnLoad(KeycloakOnLoadUnionType onLoad);
 
@@ -89,12 +92,14 @@ public interface KeycloakInitOptions {
   double getCheckLoginIframeInterval();
 
   @JsProperty
-  void setCheckLoginIframeInterval(double checkLoginIframeInterval);
+  void setCheckLoginIframeInterval(Double checkLoginIframeInterval);
 
   @JsProperty
   KeycloakResponseModeUnionType getResponseMode();
 
-  /** @param responseMode use a constant from {@link KeycloakResponseModeUnionType} */
+  /**
+   * @param responseMode use a constant from {@link KeycloakResponseModeUnionType}
+   */
   @JsProperty
   void setResponseMode(KeycloakResponseModeUnionType responseMode);
 
@@ -111,16 +116,26 @@ public interface KeycloakInitOptions {
   void setSilentCheckSsoRedirectUri(String silentCheckSsoRedirectUri);
 
   @JsProperty
+  boolean isSilentCheckSsoFallback();
+
+  @JsProperty
+  void setSilentCheckSsoFallback(boolean silentCheckSsoFallback);
+
+  @JsProperty
   KeycloakFlowUnionType getFlow();
 
-  /** @param flow use a constant from {@link KeycloakFlowUnionType} */
+  /**
+   * @param flow use a constant from {@link KeycloakFlowUnionType}
+   */
   @JsProperty
   void setFlow(KeycloakFlowUnionType flow);
 
   @JsProperty
   KeycloakPkcsMethodUnionType getPkceMethod();
 
-  /** @param pkceMethod use a constant from {@link KeycloakPkceMethod} */
+  /**
+   * @param pkceMethod use a constant from {@link KeycloakPkceMethod}
+   */
   @JsProperty
   void setPkceMethod(KeycloakPkcsMethodUnionType pkceMethod);
 

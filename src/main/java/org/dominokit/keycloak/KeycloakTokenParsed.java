@@ -15,90 +15,97 @@
  */
 package org.dominokit.keycloak;
 
-import elemental2.core.JsMap;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import jsinterop.base.Any;
+import jsinterop.base.Js;
+import jsinterop.base.JsPropertyMap;
 
 @JsType(isNative = true, namespace = JsPackage.GLOBAL)
-public class KeycloakTokenParsed extends JsMap<String, Any> {
+public interface KeycloakTokenParsed extends JsPropertyMap<Any> {
+
+  @JsOverlay
+  static KeycloakTokenParsed create() {
+    return Js.uncheckedCast(JsPropertyMap.of());
+  }
 
   @JsProperty
-  native String getIss();
+  String getIss();
 
   @JsProperty
-  native void setIss(String iss);
+  void setIss(String iss);
 
   @JsProperty
-  native String getSub();
+  String getSub();
 
   @JsProperty
-  native void setSub(String sub);
+  void setSub(String sub);
 
   @JsProperty
-  native String getAud();
+  String getAud();
 
   @JsProperty
-  native void setAud(String aud);
+  void setAud(String aud);
 
   @JsProperty
-  native double getExp();
+  double getExp();
 
   @JsProperty
-  native void setIat(double exp);
+  void setExp(double exp);
 
   @JsProperty
-  native double getIat();
+  double getIat();
 
   @JsProperty
-  native void setExp(double exp);
+  void setIat(double iat);
 
   @JsProperty(name = "auth_time")
-  native double getAuthTime();
+  double getAuthTime();
 
   @JsProperty(name = "auth_time")
-  native void setAuthTime(double authTime);
+  void setAuthTime(double authTime);
 
   @JsProperty
-  native String getNonce();
+  String getNonce();
 
   @JsProperty
-  native void setNonce(String nonce);
+  void setNonce(String nonce);
 
   @JsProperty
-  native String getAcr();
+  String getAcr();
 
   @JsProperty
-  native void setAcr(String acr);
+  void setAcr(String acr);
 
   @JsProperty
-  native String getAmr();
+  String getAmr();
 
   @JsProperty
-  native void setAmr(String amr);
+  void setAmr(String amr);
 
   @JsProperty
-  native String getAzp();
+  String getAzp();
 
   @JsProperty
-  native void setAzp(String azp);
+  void setAzp(String azp);
 
   @JsProperty(name = "session_state")
-  native String getSessionState();
+  String getSessionState();
 
   @JsProperty(name = "session_state")
-  native void setSessionState(String sessionState);
+  void setSessionState(String sessionState);
 
   @JsProperty(name = "realm_access")
-  native KeycloakRoles getRealmAccess();
+  KeycloakRoles getRealmAccess();
 
   @JsProperty(name = "realm_access")
-  native void setRealmAccess(KeycloakRoles realmAccess);
+  void setRealmAccess(KeycloakRoles realmAccess);
 
   @JsProperty(name = "resource_access")
-  native KeycloakResourceAccess getResourceAccess();
+  KeycloakResourceAccess getResourceAccess();
 
   @JsProperty(name = "resource_access")
-  native void setResourceAccess(KeycloakResourceAccess resourceAccess);
+  void setResourceAccess(KeycloakResourceAccess resourceAccess);
 }

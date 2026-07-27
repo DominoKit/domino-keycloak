@@ -23,37 +23,38 @@ import jsinterop.base.Js;
 import jsinterop.base.JsPropertyMap;
 
 @JsType(isNative = true, namespace = JsPackage.GLOBAL)
-public interface KeycloakConfig {
+public interface KeycloakOidcConfig {
 
   @JsOverlay
-  static KeycloakConfig create() {
+  static KeycloakOidcConfig create() {
     return Js.uncheckedCast(JsPropertyMap.of());
   }
 
   @JsOverlay
-  static KeycloakConfig create(String url, String realm, String clientId) {
-    KeycloakConfig config = Js.uncheckedCast(JsPropertyMap.of());
-    config.setUrl(url);
-    config.setRealm(realm);
+  static KeycloakOidcConfig create(String clientId, String oidcProvider) {
+    KeycloakOidcConfig config = Js.uncheckedCast(JsPropertyMap.of());
     config.setClientId(clientId);
+    config.setOidcProvider(KeycloakOidcProviderUnionType.of(oidcProvider));
     return config;
   }
 
-  @JsProperty
-  String getUrl();
-
-  @JsProperty
-  void setUrl(String url);
-
-  @JsProperty
-  String getRealm();
-
-  @JsProperty
-  void setRealm(String realm);
+  @JsOverlay
+  static KeycloakOidcConfig create(String clientId, KeycloakOpenIdProviderMetadata oidcProvider) {
+    KeycloakOidcConfig config = Js.uncheckedCast(JsPropertyMap.of());
+    config.setClientId(clientId);
+    config.setOidcProvider(KeycloakOidcProviderUnionType.of(oidcProvider));
+    return config;
+  }
 
   @JsProperty
   String getClientId();
 
   @JsProperty
   void setClientId(String clientId);
+
+  @JsProperty
+  KeycloakOidcProviderUnionType getOidcProvider();
+
+  @JsProperty
+  void setOidcProvider(KeycloakOidcProviderUnionType oidcProvider);
 }

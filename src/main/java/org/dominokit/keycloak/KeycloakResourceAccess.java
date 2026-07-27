@@ -15,9 +15,17 @@
  */
 package org.dominokit.keycloak;
 
-import elemental2.core.JsMap;
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsType;
+import jsinterop.base.Js;
+import jsinterop.base.JsPropertyMap;
 
 @JsType(isNative = true, namespace = JsPackage.GLOBAL)
-public class KeycloakResourceAccess extends JsMap<String, KeycloakRoles> {}
+public interface KeycloakResourceAccess extends JsPropertyMap<KeycloakRoles> {
+
+  @JsOverlay
+  static KeycloakResourceAccess create() {
+    return Js.uncheckedCast(JsPropertyMap.of());
+  }
+}

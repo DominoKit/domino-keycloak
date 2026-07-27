@@ -39,6 +39,11 @@ public class Keycloak extends JsObject {
     default KeycloakConfig asConfig() {
       return Js.cast(this);
     }
+
+    @JsOverlay
+    default KeycloakOidcConfig asOidcConfig() {
+      return Js.cast(this);
+    }
   }
 
   @JsConstructor
@@ -52,12 +57,16 @@ public class Keycloak extends JsObject {
   public KeycloakRoles realmAccess;
   public KeycloakResourceAccess resourceAccess;
   public String token;
+
+  @JsProperty(name = "tokenParsed")
   public KeycloakTokenParsed parsedToken;
+
   public String refreshToken;
   public KeycloakTokenParsed refreshTokenParsed;
   public String idToken;
   public KeycloakTokenParsed idTokenParsed;
-  public double timeSkew;
+  public Double timeSkew;
+  public boolean didInitialize;
   public boolean loginRequired;
   public String authServerUrl;
   public String realm;
@@ -66,9 +75,12 @@ public class Keycloak extends JsObject {
   public String redirectUri;
   public String sessionId;
   public KeycloakProfile profile;
-  public JsObject userInfo;
+  public KeycloakUserInfo userInfo;
 
-  public native EventCallback onActionUpdate(String status);
+  @JsProperty
+  public native void setOnActionUpdate(OnActionUpdateEventCallback onActionUpdate);
+
+  public native Promise<Boolean> init();
 
   public native Promise<Boolean> init(KeycloakInitOptions initOptions);
 
@@ -86,17 +98,29 @@ public class Keycloak extends JsObject {
 
   public native Promise<Void> accountManagement();
 
-  public native String createLoginUrl(KeycloakLoginOptions options);
+  public native Promise<String> createLoginUrl(KeycloakLoginOptions options);
+
+  public native Promise<String> createLoginUrl();
 
   public native String createLogoutUrl(KeycloakLogoutOptions options);
 
-  public native String createRegisterUrl(KeycloakRegisterOptions options);
+  public native String createLogoutUrl();
+
+  public native Promise<String> createRegisterUrl(KeycloakRegisterOptions options);
+
+  public native Promise<String> createRegisterUrl();
 
   public native String createAccountUrl(KeycloakAccountOptions options);
 
+  public native String createAccountUrl();
+
   public native boolean isTokenExpired(double minValidity);
 
+  public native boolean isTokenExpired();
+
   public native Promise<Boolean> updateToken(double minValidity);
+
+  public native Promise<Boolean> updateToken();
 
   public native void clearToken();
 
@@ -104,9 +128,11 @@ public class Keycloak extends JsObject {
 
   public native boolean hasResourceRole(String role, String resource);
 
+  public native boolean hasResourceRole(String role);
+
   public native Promise<KeycloakProfile> loadUserProfile();
 
-  public native Promise<JsObject> loadUserInfo();
+  public native Promise<KeycloakUserInfo> loadUserInfo();
 
   @JsProperty
   public native void setOnReady(OnReadyEventCallback onReady);

@@ -15,7 +15,6 @@
  */
 package org.dominokit.keycloak;
 
-import elemental2.core.JsObject;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
@@ -36,11 +35,13 @@ public interface KeycloakRegisterOptions {
   void setRedirectUri(String redirectUri);
 
   @JsProperty
-  String getPrompt();
+  KeycloakPromptUnionType getPrompt();
 
-  /** @param prompt use a constant from {@link KeycloakPromptUnionType} */
+  /**
+   * @param prompt use a constant from {@link KeycloakPromptUnionType}
+   */
   @JsProperty
-  void setPrompt(String prompt);
+  void setPrompt(KeycloakPromptUnionType prompt);
 
   @JsProperty
   double getMaxAge();
@@ -53,6 +54,12 @@ public interface KeycloakRegisterOptions {
 
   @JsProperty
   void setLoginHint(String loginHint);
+
+  @JsProperty
+  String getAcrValues();
+
+  @JsProperty
+  void setAcrValues(String acrValues);
 
   @JsProperty
   Acr getAcr();
@@ -73,8 +80,8 @@ public interface KeycloakRegisterOptions {
   void setLocale(String locale);
 
   @JsProperty
-  JsObject getCordovaOptions();
+  KeycloakCordovaOptions getCordovaOptions();
 
   @JsProperty
-  void setCordovaOptions(JsObject cordovaOptions);
+  void setCordovaOptions(KeycloakCordovaOptions cordovaOptions);
 }

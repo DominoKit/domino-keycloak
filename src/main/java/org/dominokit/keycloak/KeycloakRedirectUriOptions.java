@@ -17,29 +17,22 @@ package org.dominokit.keycloak;
 
 import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 import jsinterop.base.Js;
+import jsinterop.base.JsPropertyMap;
 
-@JsType(isNative = true, name = "?", namespace = JsPackage.GLOBAL)
-public interface KeycloakPromptUnionType {
-
-  @JsOverlay
-  static KeycloakPromptUnionType login() {
-    return Js.cast("login");
-  }
+@JsType(isNative = true, namespace = JsPackage.GLOBAL)
+public interface KeycloakRedirectUriOptions {
 
   @JsOverlay
-  static KeycloakPromptUnionType none() {
-    return Js.cast("none");
+  static KeycloakRedirectUriOptions create() {
+    return Js.uncheckedCast(JsPropertyMap.of());
   }
 
-  @JsOverlay
-  static KeycloakPromptUnionType consent() {
-    return Js.cast("consent");
-  }
+  @JsProperty
+  String getRedirectUri();
 
-  @JsOverlay
-  default String asString() {
-    return Js.asString(this);
-  }
+  @JsProperty
+  void setRedirectUri(String redirectUri);
 }

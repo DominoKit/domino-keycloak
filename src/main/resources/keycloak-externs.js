@@ -1,5 +1,8 @@
 /**
  *@externs
+ *
+ * Synchronized with the official keycloak-js package typings
+ * (lib/keycloak.d.ts from keycloak-js 26.2.4).
  */
 
 /**
@@ -21,6 +24,51 @@ KeycloakConfig.prototype.realm;
  * @type {string}
  */
 KeycloakConfig.prototype.clientId;
+
+/**
+ * @constructor
+ */
+function KeycloakOpenIdProviderMetadata() {}
+
+/**
+ * @type {string}
+ */
+KeycloakOpenIdProviderMetadata.prototype.authorization_endpoint;
+
+/**
+ * @type {string}
+ */
+KeycloakOpenIdProviderMetadata.prototype.token_endpoint;
+
+/**
+ * @type {?string}
+ */
+KeycloakOpenIdProviderMetadata.prototype.userinfo_endpoint;
+
+/**
+ * @type {?string}
+ */
+KeycloakOpenIdProviderMetadata.prototype.check_session_iframe;
+
+/**
+ * @type {?string}
+ */
+KeycloakOpenIdProviderMetadata.prototype.end_session_endpoint;
+
+/**
+ * @constructor
+ */
+function KeycloakOidcConfig() {}
+
+/**
+ * @type {string}
+ */
+KeycloakOidcConfig.prototype.clientId;
+
+/**
+ * @type {(string|KeycloakOpenIdProviderMetadata)}
+ */
+KeycloakOidcConfig.prototype.oidcProvider;
 
 
 /**
@@ -49,7 +97,7 @@ function KeycloakInitOptions() {}
 KeycloakInitOptions.prototype.useNonce;
 
 /**
- * @type {?KeycloakAdapter}
+ * @type {?(string|KeycloakAdapter)}
  */
 KeycloakInitOptions.prototype.adapter;
 
@@ -133,6 +181,11 @@ KeycloakInitOptions.prototype.scope;
  */
 KeycloakInitOptions.prototype.messageReceiveTimeout;
 
+/**
+ * @type {?string}
+ */
+KeycloakInitOptions.prototype.logoutMethod;
+
 
 /**
  * @interface
@@ -186,6 +239,11 @@ KeycloakLoginOptions.prototype.idpHint;
 KeycloakLoginOptions.prototype.locale;
 
 /**
+ * @type {?string}
+ */
+KeycloakLoginOptions.prototype.acrValues;
+
+/**
  * @type {?Object<string,string>}
  */
 KeycloakLoginOptions.prototype.cordovaOptions;
@@ -200,6 +258,11 @@ function KeycloakLogoutOptions() {}
  * @type {?string}
  */
 KeycloakLogoutOptions.prototype.redirectUri;
+
+/**
+ * @type {?string}
+ */
+KeycloakLogoutOptions.prototype.logoutMethod;
 
 /**
  * @interface
@@ -247,6 +310,11 @@ KeycloakRegisterOptions.prototype.idpHint;
 KeycloakRegisterOptions.prototype.locale;
 
 /**
+ * @type {?string}
+ */
+KeycloakRegisterOptions.prototype.acrValues;
+
+/**
  * @type {?Object<string,string>}
  */
 KeycloakRegisterOptions.prototype.cordovaOptions;
@@ -264,26 +332,12 @@ KeycloakAccountOptions.prototype.redirectUri;
 /**
  * @constructor
  */
-function KeycloakPromise() {}
-
-
-/**
- * @param {KeycloakPromiseCallback} callback
- * @return {KeycloakPromise}
- */
-KeycloakPromise.prototype.success = function(callback) {};
-
+function KeycloakRedirectUriOptions() {}
 
 /**
- * @param {KeycloakPromiseCallback} callback
- * @return {KeycloakPromise}
+ * @type {?string}
  */
-KeycloakPromise.prototype.error = function(callback) {};
-
-/**
- * @typedef {!function(Object): void}
- */
-var KeycloakPromiseCallback;
+KeycloakRedirectUriOptions.prototype.redirectUri;
 
 /**
  * @constructor
@@ -308,25 +362,25 @@ function KeycloakAdapter() {}
 
 /**
  * @param {KeycloakLoginOptions=} options
- * @return {KeycloakPromise}
+ * @return {Promise<void>}
  */
 KeycloakAdapter.prototype.login = function (options){}
 
 /**
  * @param {KeycloakLogoutOptions=} options
- * @return {KeycloakPromise}
+ * @return {Promise<void>}
  */
 KeycloakAdapter.prototype.logout = function (options){}
 
 /**
  * @param {KeycloakRegisterOptions=} opt_options
- * @return {KeycloakPromise}
+ * @return {Promise<void>}
  */
 KeycloakAdapter.prototype.register = function(opt_options) {};
 
 
 /**
- * @return {KeycloakPromise}
+ * @return {Promise<void>}
  */
 KeycloakAdapter.prototype.accountManagement = function() {};
 
@@ -336,7 +390,7 @@ KeycloakAdapter.prototype.accountManagement = function() {};
  * @param {boolean} encodeHash
  * @return {string}
  */
-KeycloakAdapter.prototype.redirectUri = function(options, encodeHash) {};
+KeycloakAdapter.prototype.redirectUri = function(options) {};
 
 /**
  * @interface
@@ -387,6 +441,16 @@ KeycloakProfile.prototype.totp;
  * @type {?number}
  */
 KeycloakProfile.prototype.createdTimestamp;
+
+/**
+ * @constructor
+ */
+function KeycloakUserInfo() {}
+
+/**
+ * @type {?string}
+ */
+KeycloakUserInfo.prototype.sub;
 
 /**
  * @interface
@@ -479,7 +543,7 @@ function KeycloakResourceAccess() {}
 KeycloakResourceAccess.prototype;
 
 /**
- * @param {string|KeycloakConfig} url
+ * @param {string|KeycloakConfig|KeycloakOidcConfig} url
  * @constructor
  */
 function Keycloak(url) {}
@@ -603,10 +667,15 @@ Keycloak.prototype.sessionId;
 Keycloak.prototype.profile;
 
 /**
- * @type {?Object}
+ * @type {?KeycloakUserInfo}
  * @private
  */
 Keycloak.prototype.userInfo;
+
+/**
+ * @type {boolean}
+ */
+Keycloak.prototype.didInitialize;
 
 
 //------------------------------------
@@ -648,41 +717,42 @@ Keycloak.prototype.onTokenExpired = function(){};
 
 /**
  * @param {string} status
+ * @param {string=} action
  */
-Keycloak.prototype.onActionUpdate = function(status){};
+Keycloak.prototype.onActionUpdate = function(status, action){};
 
 /**
- * @param {KeycloakInitOptions} initOptions
- * @return {KeycloakPromise<boolean,KeycloakError>}
+ * @param {KeycloakInitOptions=} initOptions
+ * @return {Promise<boolean>}
  */
 Keycloak.prototype.init = function(initOptions){}
 
 /**
  * @param {KeycloakLoginOptions=} options.
- * @return {KeycloakPromise}
+ * @return {Promise<void>}
  */
 Keycloak.prototype.login = function(options){}
 
 /**
  * @param {KeycloakLogoutOptions=} options
- * @return {KeycloakPromise}
+ * @return {Promise<void>}
  */
 Keycloak.prototype.logout = function(options){}
 
 /**
  * @param {KeycloakRegisterOptions=} options
- * @return {KeycloakPromise}
+ * @return {Promise<void>}
  */
 Keycloak.prototype.register = function(options){}
 
 /**
- * @return {KeycloakPromise}
+ * @return {Promise<void>}
  */
 Keycloak.prototype.accountManagement = function(){}
 
 /**
  * @param {KeycloakLoginOptions=} options
- * @return {string}
+ * @return {Promise<string>}
  */
 Keycloak.prototype.createLoginUrl = function(options){}
 
@@ -694,7 +764,7 @@ Keycloak.prototype.createLogoutUrl = function(options){}
 
 /**
  * @param {KeycloakRegisterOptions=} options
- * @return {string}
+ * @return {Promise<string>}
  */
 Keycloak.prototype.createRegisterUrl = function(options){}
 
@@ -711,8 +781,8 @@ Keycloak.prototype.createAccountUrl = function(options){}
 Keycloak.prototype.isTokenExpired = function(minValidity){}
 
 /**
- * @param {number} minValidity
- * @return {KeycloakPromise<boolean, boolean>}
+ * @param {number=} minValidity
+ * @return {Promise<boolean>}
  */
 Keycloak.prototype.updateToken = function(minValidity){}
 
@@ -736,11 +806,11 @@ Keycloak.prototype.hasRealmRole = function(role){}
 Keycloak.prototype.hasResourceRole = function(role, resource){}
 
 /**
- * @return {KeycloakPromise<KeycloakProfile, ?>}
+ * @return {Promise<KeycloakProfile>}
  */
 Keycloak.prototype.loadUserProfile = function(){}
 
 /**
- * @return {KeycloakPromise<Object, ?>}
+ * @return {Promise<KeycloakUserInfo>}
  */
 Keycloak.prototype.loadUserInfo = function(){}
